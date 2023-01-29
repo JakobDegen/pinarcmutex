@@ -20,9 +20,17 @@
 //! [structural pinning]:
 //!     https://doc.rust-lang.org/std/pin/index.html#projections-and-structural-pinning
 //!
+//! ### Alternatives
+//!
+//! If your `T` is `Unpin`, you can use a `Arc<tokio::Mutex<T>>` directly and do not need this
+//! crate.
+//!
+//! If you do not mind an extra allocation, you can also get a similar API without an extra
+//! dependency via `Arc<tokio::Mutex<Pin<Box<T>>>>`.
+//!
 //! ### MSRV
 //!
-//! This crate has the same MSRV as it's only dependency, tokio.
+//! This crate has the same MSRV as its only dependency, tokio.
 //!
 
 use std::pin::Pin;
